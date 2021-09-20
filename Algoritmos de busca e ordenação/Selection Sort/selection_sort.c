@@ -7,7 +7,8 @@ double ordenar_lista(long int lista[], long int tamanho);
 int main()
 {
     srand(time(NULL));
-
+    
+    //variável tamanho que define o tamanho do vetor. simula input de usuário, pode ser alterada para qualquer valor conveniente.
     long int tamanho = 100000;
     long int lista[tamanho];
     int i;
@@ -39,14 +40,20 @@ double ordenar_lista(long int lista[], long int tamanho)
     clock_t inicio;
     clock_t fim;
     double tempo_de_execucao;
-
+    
+    //as funções de clock vão medir o tempo de processamento da função
     inicio = clock();
+    
+    //o selection sort faz duas verificações no vetor: a primeira (primeiro laço for) caminha por cada elemento do vetor, e a segunda (segundo laço for)
+    //vai caminhar por todos os elementos posteriores ao atual para fazer as comparações.
     for(i = 0; i < tamanho; ++i)
     {
         for(j = i + 1; j < tamanho; ++j)
         {
             if(lista[i] > lista[j])
             {
+                //valor atual (i) é armazenado em variável de backup, depois o atual é substituido pelo próximo valor que seja menor que ele (j)
+                //após isso, a posição (j) é preenchida com o valor de backup, ordenando a lista
                 armazena_valor = lista[i];
                 lista[i] = lista[j];
                 lista[j] = armazena_valor;
